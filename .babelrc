@@ -1,0 +1,17 @@
+// for the latest JS features and specify the current version of Node as the target environment
+
+{
+    "presets": [
+      ["@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "react-hot-loader/babel"
+    ]
+  }
