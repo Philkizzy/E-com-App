@@ -6,6 +6,7 @@ const ShopSchema = new mongoose.Schema({
     trim: true,
     required: 'Name is required'
   },
+  //The image field will store the logo image file uploaded by the user
   image: {
     data: Buffer,
     contentType: String
@@ -19,5 +20,8 @@ const ShopSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  //this field references the user who creates the shop
   owner: {type: mongoose.Schema.ObjectId, ref: 'User'}
 })
+
+export default mongoose('Shop', ShopSchema)

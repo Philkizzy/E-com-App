@@ -1,5 +1,15 @@
 import mongoose from 'mongoose'
 
+const CartItemSchema = new mongoose.Schema({
+    product: {type: mongoose.Schema.ObjectId, ref: 'Product'},
+    quantity: Number,
+    shop: {type: mongoose.Schema.ObjectId, ref: 'Shop'},
+    status: {type: String,
+      default: 'Not processed',
+      enum: ['Not processed' , 'Processing', 'Shipped', 'Delivered', 'Cancelled']}
+  })
+  const CartItem = mongoose.model('CartItem', CartItemSchema)
+
 const OrderSchema = new mongoose.Schema({
     products: [CartItemSchema],
     customer_name: {
@@ -28,4 +38,8 @@ const OrderSchema = new mongoose.Schema({
     },
     user: {type: mongoose.Schema.ObjectId, ref: 'User'}
   })
+
+  const Order = mongoose.model('Order', OrderSchema)
+
+  export{Order, CartItem}
   
